@@ -20,38 +20,31 @@ function verificarAgenda(p1InicioStr, p1FimStr, p2InicioStr, p2FimStr) {
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    const botao = document.getElementById("verificarAgenda");
+function setupAgenda() {
+    const p1DataIn = document.getElementById("p1DataInicio").value;
+    const p1HoraIn = document.getElementById("p1HoraInicio").value;
+    const p1DataFi = document.getElementById("p1DataFim").value;
+    const p1HoraFi = document.getElementById("p1HoraFim").value;
 
-    if (botao) {
-        botao.addEventListener("click", function () {
+    const p2DataIn = document.getElementById("p2DataInicio").value;
+    const p2HoraIn = document.getElementById("p2HoraInicio").value;
+    const p2DataFi = document.getElementById("p2DataFim").value;
+    const p2HoraFi = document.getElementById("p2HoraFim").value;
 
-            const p1DataIn = document.getElementById("p1DataInicio").value;
-            const p1HoraIn = document.getElementById("p1HoraInicio").value;
-            const p1DataFi = document.getElementById("p1DataFim").value;
-            const p1HoraFi = document.getElementById("p1HoraFim").value;
-
-            const p2DataIn = document.getElementById("p2DataInicio").value;
-            const p2HoraIn = document.getElementById("p2HoraInicio").value;
-            const p2DataFi = document.getElementById("p2DataFim").value;
-            const p2HoraFi = document.getElementById("p2HoraFim").value;
-
-            if (!p1DataIn || !p1HoraIn || !p1DataFi || !p1HoraFi || !p2DataIn || !p2HoraIn || !p2DataFi || !p2HoraFi) {
-                alert("Por favor, preencha todos os campos!");
-                return;
-            }
-
-            function formatar(dataHtml, horaHtml) {
-                const [ano, mes, dia] = dataHtml.split("-");
-                return `${dia}/${mes}/${ano} - ${horaHtml}`;
-            }
-
-            const p1InicioFormatado = formatar(p1DataIn, p1HoraIn);
-            const p1FimFormatado = formatar(p1DataFi, p1HoraFi);
-            const p2InicioFormatado = formatar(p2DataIn, p2HoraIn);
-            const p2FimFormatado = formatar(p2DataFi, p2HoraFi);
-
-            verificarAgenda(p1InicioFormatado, p1FimFormatado, p2InicioFormatado, p2FimFormatado);
-        });
+    if (!p1DataIn || !p1HoraIn || !p1DataFi || !p1HoraFi || !p2DataIn || !p2HoraIn || !p2DataFi || !p2HoraFi) {
+        alert("Por favor, preencha todos os campos!");
+        return;
     }
-});
+
+    function formatar(dataHtml, horaHtml) {
+        const [ano, mes, dia] = dataHtml.split("-");
+        return `${dia}/${mes}/${ano} - ${horaHtml}`;
+    }
+
+    const p1InicioFormatado = formatar(p1DataIn, p1HoraIn);
+    const p1FimFormatado = formatar(p1DataFi, p1HoraFi);
+    const p2InicioFormatado = formatar(p2DataIn, p2HoraIn);
+    const p2FimFormatado = formatar(p2DataFi, p2HoraFi);
+
+    verificarAgenda(p1InicioFormatado, p1FimFormatado, p2InicioFormatado, p2FimFormatado);
+}
